@@ -9,27 +9,34 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var isLightOn = true
-    @IBOutlet weak var button: UIButton!
+    var colorSwitch = 0
     
     override var prefersStatusBarHidden: Bool {	
         return true
     }
     
-    fileprivate func checkLight() {
-        view.backgroundColor = isLightOn ? .white : .black
+    fileprivate func switchColor() {
+        switch colorSwitch {
+        case 0:
+            view.backgroundColor = .red
+        case 1:
+            view.backgroundColor = .yellow
+        case 2:
+            view.backgroundColor = .green
+        default:
+            view.backgroundColor = .black
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        button.setTitle(" ", for: [])
-        checkLight()
-    }
-
-    @IBAction func ButtonPress(_ sender: UIButton) {
-        isLightOn.toggle()
-        checkLight()
+        switchColor()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        colorSwitch = colorSwitch + 1 > 2 ? 0 : colorSwitch + 1
+        switchColor()
+    }
+
 }
 
