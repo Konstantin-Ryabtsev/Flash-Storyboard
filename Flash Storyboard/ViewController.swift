@@ -9,8 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var isLightOn = false
+    var isLightOn = true
     @IBOutlet weak var button: UIButton!
+    
+    override var prefersStatusBarHidden: Bool {	
+        return true
+    }
     
     fileprivate func checkLight() {
         view.backgroundColor = isLightOn ? .white : .black
