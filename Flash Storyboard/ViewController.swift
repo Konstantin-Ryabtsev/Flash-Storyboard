@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
     
@@ -19,10 +20,13 @@ class ViewController: UIViewController {
         switch colorSwitch {
         case 0:
             view.backgroundColor = .red
+            toggleTorch(on: false)
         case 1:
             view.backgroundColor = .yellow
+            toggleTorch(on: false)
         case 2:
             view.backgroundColor = .green
+            toggleTorch(on: true)
         default:
             view.backgroundColor = .black
         }
@@ -38,5 +42,27 @@ class ViewController: UIViewController {
         switchColor()
     }
 
+    func toggleTorch(on: Bool) {
+        guard let device = AVCaptureDevice.default(for: .video) else { return }
+
+        if device.hasTorch {
+            do {
+                try device.lockForConfiguration()
+
+                if on == true {
+                    device.torchMode = .on
+                } else {
+                    device.torchMode = .off
+                }
+
+                device.unlockForConfiguration()
+            } catch {
+                print("Torch could not be used")
+            }
+        } else {
+            print("Torch is not available")
+        }
+    }
+    
 }
 
