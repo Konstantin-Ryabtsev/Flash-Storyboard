@@ -2,6 +2,8 @@
 
 First homework for Moscow Digital Academy
 
+Flashlight will be switched on green screen
+
 Screenshots:
 
 ![Снимок экрана 2021-04-09 в 01 21 37](https://user-images.githubusercontent.com/79380295/114103654-308c7e80-98d2-11eb-8a82-a9934ca194ef.png)
