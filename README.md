@@ -1,3 +1,5 @@
-# Flash-Storyboard
+# Trafic Light App
 
-First homework
+First homework for Moscow Digital Academy
+
+
