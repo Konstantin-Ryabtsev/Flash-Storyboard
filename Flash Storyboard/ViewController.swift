@@ -8,12 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var isLightOn = false
+    @IBOutlet weak var button: UIButton!
+    
+    fileprivate func checkLight() {
+        view.backgroundColor = isLightOn ? .white : .black
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        button.setTitle(" ", for: [])
+        checkLight()
     }
 
-
+    @IBAction func ButtonPress(_ sender: UIButton) {
+        isLightOn.toggle()
+        checkLight()
+    }
+    
 }
 
