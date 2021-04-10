@@ -16,7 +16,8 @@ class ViewController: UIViewController {
         return true
     }
     
-    fileprivate func switchColor() {
+    /// Swith color based on colorSwitch variable: 0-red, 1-yellow, 2-green
+    func switchColor() {
         switch colorSwitch {
         case 0:
             view.backgroundColor = .red
@@ -41,20 +42,22 @@ class ViewController: UIViewController {
         colorSwitch = colorSwitch + 1 > 2 ? 0 : colorSwitch + 1
         switchColor()
     }
-
+    
+    /// Check if we can use tourch on device and switch it
+    /// - Parameter on: switch torch true-enable, false-disable
     func toggleTorch(on: Bool) {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
-
+        
         if device.hasTorch {
             do {
                 try device.lockForConfiguration()
-
+                
                 if on == true {
                     device.torchMode = .on
                 } else {
                     device.torchMode = .off
                 }
-
+                
                 device.unlockForConfiguration()
             } catch {
                 print("Torch could not be used")
